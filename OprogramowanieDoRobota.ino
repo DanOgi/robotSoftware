@@ -40,7 +40,7 @@ void setup()
 
   Serial.begin(9600);
   mySerial.begin(9600);
-  mySerial.setTimeout(500);
+  mySerial.setTimeout(25);
 
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
@@ -76,7 +76,7 @@ void loop()
 
   if (mySerial.available()) {
     str = mySerial.readString();
-    //Serial.print(str);
+    Serial.print(str);
     mySerial.println(vIn);
 
     direction = str.substring(0, 2);
@@ -87,7 +87,7 @@ void loop()
   distance_back = ultrasonic(TRIG_PIN_BACK, ECHO_PIN_BACK);
   distance_front = ultrasonic(TRIG_PIN_FRONT, ECHO_PIN_FRONT);
 
-  Serial.println(distance_front);
+  //Serial.println(distance_front);
 
   if (direction == "SS") {
     //Serial.println("STOP");
